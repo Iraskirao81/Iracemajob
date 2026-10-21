@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Iracema Ortega | Senior Implementation & Customer Success Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF3F3;--card:#fff;--ink:#102027;--mut:#4B5E66;--teal:#0B3C49;--gold:#F2B632;--line:#D3DFE0;--on:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1A20;--card:#112A33;--ink:#E8F0F1;--mut:#9DB3B9;--teal:#7FD1D9;--line:#1E3C47;--on:#0A1A20}}
+:root[data-theme="dark"]{--bg:#0A1A20;--card:#112A33;--ink:#E8F0F1;--mut:#9DB3B9;--teal:#7FD1D9;--line:#1E3C47;--on:#0A1A20}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Source Sans 3",system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1,h2,h3,.big{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{max-width:1040px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:16px;justify-content:space-between}
+.mono{width:38px;height:38px;border-radius:50%;background:var(--teal);color:var(--on);display:grid;place-items:center;font:800 15px "Bricolage Grotesque",sans-serif}
+nav{display:flex;gap:18px;flex:1;justify-content:center}
+nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+nav a:hover{color:var(--teal);text-decoration:underline}
+.lang{display:flex;border:1.5px solid var(--teal);border-radius:8px;overflow:hidden}
+.lang button{border:0;background:none;color:var(--teal);font:600 14px inherit;padding:6px 11px;cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--teal);color:var(--on)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+main{max-width:1040px;margin:auto;padding:0 20px}
+section{padding:56px 0 8px}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;padding:56px 0 24px}
+h1{font-size:clamp(34px,6vw,60px);font-weight:800;color:var(--teal);letter-spacing:-.02em}
+.name{font-weight:600;color:var(--mut);margin:0 0 14px}
+.sub{font-size:19px;margin:18px 0 10px}
+.exp{color:var(--mut);margin:0 0 24px}
+.btn{display:inline-block;background:var(--gold);color:#102027;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:8px}
+.btn:hover{filter:brightness(.95)}
+.btn.ghost{background:none;border:2px solid var(--teal);color:var(--teal);margin:8px 8px 0 0}
+.count{background:var(--teal);color:var(--on);border-radius:16px;padding:24px 28px}
+.count .row{display:flex;align-items:center;gap:18px;padding:10px 0}.count .row+.row{border-top:1px solid rgba(255,255,255,.25)}.count .big{font-size:clamp(44px,9vw,64px);font-weight:800;color:var(--gold);min-width:2ch;text-align:right}
+.count p{margin:0;font-weight:600;line-height:1.3}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0 0}
+.stats div{border-left:4px solid var(--gold);padding-left:14px}
+.stats b{display:block;font:800 30px "Bricolage Grotesque",sans-serif;color:var(--teal)}
+.stats span{color:var(--mut);font-size:15px}
+h2{font-size:clamp(28px,4vw,38px);font-weight:800;color:var(--teal);margin-bottom:22px}
+.about p{max-width:66ch;margin:0 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+.card .big{font-size:34px;font-weight:800;color:var(--teal);margin-bottom:8px}
+.card h3{font-size:19px;margin-bottom:8px}
+.card p{margin:0;color:var(--mut);font-size:16px}
+.note{margin:20px 0 0;max-width:66ch;font-weight:600}
+.sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.sk h3{font-size:18px;color:var(--teal);margin-bottom:6px}
+.sk p{margin:0}
+.contact{background:var(--teal);color:var(--on);border-radius:16px;padding:36px;margin:56px 0 0}
+.contact h2{color:var(--gold)}
+.contact p{margin:0 0 18px;max-width:60ch}
+.links{display:flex;flex-wrap:wrap;gap:12px}
+.links a{display:inline-flex;align-items:center;gap:8px;color:var(--on);border:1.5px solid var(--on);padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600}
+.links a:hover{background:var(--gold);border-color:var(--gold);color:#102027}
+footer{max-width:1040px;margin:auto;padding:24px 20px 32px;color:var(--mut);font-size:14px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;gap:24px}.stats{grid-template-columns:1fr}nav{display:none}.contact{padding:26px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="bar"><div class="mono" aria-hidden="true">IO</div>
+<nav><a href="#about" data-i="nA"></a><a href="#results" data-i="nR"></a><a href="#ai" data-i="nI"></a><a href="#skills" data-i="nS"></a><a href="#contact" data-i="nC"></a></nav>
+<div class="lang" role="group" aria-label="Language"><button data-l="en">EN</button><button data-l="es">ES</button><button data-l="fr">FR</button></div></div></header>
+<main>
+<div class="hero">
+<div><p class="name">Iracema Ortega, MBA</p><h1>Senior Implementation &amp; Customer Success Manager</h1>
+<p class="sub" data-i="sub"></p><p class="exp" data-i="exp"></p><a class="btn" href="https://calendar.app.google/j12xmrCzaDTa4swx9" target="_blank" rel="noopener" data-i="cta"></a> <a class="btn ghost" href="https://elevenlabs.io/app/talk-to?agent_id=agent_7101m535wsenfvgtbvm7y3bnftjc" target="_blank" rel="noopener" data-i="talk"></a></div>
+<div class="count"><div class="row"><div class="big"><span id="n">5</span></div><p data-i="cnt"></p></div><div class="row"><div class="big">9</div><p data-i="cnt2"></p></div><div class="row"><div class="big">21</div><p data-i="cnt3"></p></div></div>
+</div>
+<div class="stats"><div><b>$31M</b><span data-i="s1"></span></div><div><b>20%</b><span data-i="s2"></span></div><div><b>98%</b><span data-i="s3"></span></div></div>
+
+<section id="about" class="about"><h2 data-i="nA"></h2><p data-i="a1"></p><p data-i="a2"></p></section>
+
+<section id="results"><h2 data-i="nR"></h2><div class="grid">
+<div class="card"><div class="big">5</div><h3 data-i="w1h"></h3><p data-i="w1p"></p></div>
+<div class="card"><h3 data-i="w2h"></h3><p data-i="w2p"></p></div>
+<div class="card"><div class="big">$13M + $18M</div><h3 data-i="w3h"></h3><p data-i="w3p"></p></div>
+<div class="card"><div class="big">67%&rarr;85%</div><h3 data-i="w4h"></h3><p data-i="w4p"></p></div>
+<div class="card"><div class="big">83%</div><h3 data-i="w5h"></h3><p data-i="w5p"></p></div>
+</div></section>
+
+<section id="ai"><h2 data-i="nI"></h2><div class="grid">
+<div class="card"><h3 data-i="i1h"></h3><p data-i="i1p"></p></div>
+<div class="card"><h3 data-i="i2h"></h3><p data-i="i2p"></p></div>
+<div class="card"><div class="big">&minus;30%</div><h3 data-i="i3h"></h3><p data-i="i3p"></p></div>
+</div><p class="note" data-i="iN"></p></section>
+
+<section id="skills"><h2 data-i="nS"></h2><div class="sk">
+<div><h3 data-i="k1h"></h3><p data-i="k1p"></p></div>
+<div><h3 data-i="k2h"></h3><p data-i="k2p"></p></div>
+<div><h3 data-i="k3h"></h3><p data-i="k3p"></p></div>
+<div><h3 data-i="k4h"></h3><p data-i="k4p"></p></div>
+</div></section>
+
+<section id="contact" class="contact"><h2 data-i="cT"></h2><p data-i="cP"></p>
+<div class="links"><a href="https://calendar.app.google/j12xmrCzaDTa4swx9" target="_blank" rel="noopener" data-i="cta"></a><a href="https://elevenlabs.io/app/talk-to?agent_id=agent_7101m535wsenfvgtbvm7y3bnftjc" target="_blank" rel="noopener" data-i="talk"></a><a href="mailto:iracema.ootanez@gmail.com">iracema.ootanez@gmail.com</a><a href="https://linkedin.com/in/iracema-ortega" target="_blank" rel="noopener">LinkedIn</a><a href="tel:+528116907070"><svg role="img" aria-label="Mexico" width="28" height="16" viewBox="0 0 7 4"><rect width="2.34" height="4" fill="#006847"/><rect x="2.33" width="2.34" height="4" fill="#fff"/><rect x="4.66" width="2.34" height="4" fill="#CE1126"/><ellipse cx="3.5" cy="1.85" rx=".5" ry=".55" fill="#8C5A2B"/><circle cx="3.5" cy="1.2" r=".18" fill="#8C5A2B"/><path d="M2.95 2.7Q3.5 3.2 4.05 2.7" fill="none" stroke="#006847" stroke-width=".18" stroke-linecap="round"/></svg>+52 811 690 7070</a><a href="tel:+18737155076"><svg role="img" aria-label="Canada" width="32" height="16" viewBox="0 0 4 2"><rect width="4" height="2" fill="#fff"/><rect width="1" height="2" fill="#D52B1E"/><rect x="3" width="1" height="2" fill="#D52B1E"/><polygon fill="#D52B1E" points="2,.3 2.15,.65 2.4,.55 2.3,1.05 2.55,.95 2.45,1.25 2.6,1.35 2.05,1.5 2.05,1.75 1.95,1.75 1.95,1.5 1.4,1.35 1.55,1.25 1.45,.95 1.7,1.05 1.6,.55 1.85,.65"/></svg>873.715.5076</a></div></section>
+</main>
+<footer data-i="loc"></footer>
+<script>
+const T={
+en:{nA:"About me",nR:"Results",nI:"Projects with AI",nS:"Skills",nC:"Contact",
+sub:"Global Customer Implementation Manager. Remote, available in Americas time zones.",
+exp:"18+ years of implementation experience at SaaS technology companies focused on Travel & Expense and Records Management.",
+cta:"Book a call",talk:"Talk to my AI assistant",cnt:"LATAM countries with standardized project implementations",cnt2:"countries with global implementations",cnt3:"countries managed as Regional Account Manager",s1:"in multi-country renewals",s2:"faster time-to-value",s3:"SLA and compliance adherence",
+a1:"I lead global implementations from kickoff to steady state. I replace manual, country-by-country work with one standard process that teams and clients can see and trust.",
+a2:"I use AI to automate and scale that work, and I build trust with clients and teams across LATAM and NORAM. I work in Spanish (native), English (fluent), French (intermediate) and Portuguese (intermediate).",
+w1h:"One standard process across LATAM",w1p:"Replaced manual, local processes in Mexico, Argentina, Peru, Brazil and Colombia with one standard adapted to each operation. A shared dashboard shows weekly progress, error rates and actions in real time.",
+w2h:"M&A integration method",w2p:"Built a method that combines the global standard with each country's processes to onboard acquired client portfolios as Iron Mountain clients.",
+w3h:"Enterprise renewals, 100% retention",w3p:"Renewed two enterprise accounts across 21 countries through executive Strategic Business Reviews at CWT.",
+w4h:"Digital adoption and savings",w4p:"Raised digital platform adoption with market-by-market tracking and readiness plans, cut client annual spend by 8%, and held 0% churn across 50+ Fortune 500 accounts at CWT.",
+w5h:"Contract renewal rate",w5p:"Renewed 15 of 18 global Pharma and Insurance contracts at Iron Mountain with 100% compliance adherence.",
+i1h:"Gemini virtual assistant",i1p:"Answers contacts by market from the SOW, and drafts meeting minutes, kickoff and recurring agendas, communications and deliverables.",
+i2h:"NotebookLM process trainer",i2p:"Teaches the product implementation process to new team members.",
+i3h:"Smartsheet AI",i3p:"Cut final deliverables from 48 to about 34 business hours.",
+iN:"The Gemini and NotebookLM models are now the template for all products supported by the global onboarding implementation team.",
+k1h:"Implementation and programs",k1p:"Global implementation, program management, risk and change management, SOW and RFP management.",
+k2h:"Customer success",k2p:"Account management, retention, renewals, Strategic Business Reviews, MEDDPICC.",
+k3h:"AI and tools",k3p:"Gemini, NotebookLM, Smartsheet AI, Smartsheet, Salesforce, Excel.",
+k4h:"Methods and certifications",k4p:"Lean Six Sigma Yellow Belt, Agile, PMP (in progress), MBA.",
+cT:"Let's talk",cP:"I'm open to remote roles in implementation, customer success and program management.",ph:"Phone (Mexico)",loc:"Remote, available in Americas time zones"},
+es:{nA:"Sobre mí",nR:"Logros",nI:"Proyectos con IA",nS:"Habilidades",nC:"Contacto",
+sub:"Global Customer Implementation Manager. Remoto, disponible en horarios de América.",
+exp:"18+ años de experiencia en implementación en empresas de tecnología SaaS enfocadas en Travel & Expense y Records Management.",
+cta:"Agenda una llamada",talk:"Habla con mi asistente de IA",cnt:"países de LATAM con implementaciones de proyectos estandarizadas",cnt2:"países con implementaciones globales",cnt3:"países gestionados como Regional Account Manager",s1:"en renovaciones multipaís",s2:"menos time-to-value",s3:"de cumplimiento de SLA y compliance",
+a1:"Lidero implementaciones globales desde el kickoff hasta la operación estable. Reemplazo el trabajo manual país por país con un proceso estándar que los equipos y los clientes pueden ver y en el que pueden confiar.",
+a2:"Uso IA para automatizar y escalar ese trabajo, y construyo confianza con clientes y equipos en LATAM y NORAM. Trabajo en español (nativo), inglés (fluido), francés (intermedio) y portugués (intermedio).",
+w1h:"Un proceso estándar en toda LATAM",w1p:"Reemplacé procesos locales manuales en México, Argentina, Perú, Brasil y Colombia con un estándar adaptado a cada operación. Un dashboard compartido muestra avance semanal, errores y acciones en tiempo real.",
+w2h:"Metodología de integración M&A",w2p:"Creé una metodología que combina el estándar global con los procesos de cada país para integrar las carteras de clientes adquiridas como clientes de Iron Mountain.",
+w3h:"Renovaciones enterprise, 100% de retención",w3p:"Renové dos cuentas enterprise en 21 países mediante Strategic Business Reviews ejecutivas en CWT.",
+w4h:"Adopción digital y ahorro",w4p:"Aumenté la adopción de la plataforma digital con seguimiento por mercado y planes de preparación, reduje 8% el gasto anual del cliente y mantuve 0% de churn en más de 50 cuentas Fortune 500 en CWT.",
+w5h:"Tasa de renovación de contratos",w5p:"Renové 15 de 18 contratos globales de Pharma y Seguros en Iron Mountain con 100% de cumplimiento.",
+i1h:"Asistente virtual en Gemini",i1p:"Responde contactos por mercado según el SOW y redacta minutas, agendas de kickoff y reuniones periódicas, comunicaciones y entregables.",
+i2h:"Entrenador de procesos en NotebookLM",i2p:"Enseña el proceso de implementación de un producto a nuevos integrantes del equipo.",
+i3h:"Smartsheet AI",i3p:"Redujo los entregables finales de 48 a unas 34 horas hábiles.",
+iN:"Los modelos de Gemini y NotebookLM son hoy la plantilla para todos los productos que soporta el equipo global de implementación y onboarding.",
+k1h:"Implementación y programas",k1p:"Implementación global, gestión de programas, riesgos y cambio, gestión de SOW y RFP.",
+k2h:"Customer success",k2p:"Gestión de cuentas, retención, renovaciones, Strategic Business Reviews, MEDDPICC.",
+k3h:"IA y herramientas",k3p:"Gemini, NotebookLM, Smartsheet AI, Smartsheet, Salesforce, Excel.",
+k4h:"Metodologías y certificaciones",k4p:"Lean Six Sigma Yellow Belt, Agile, PMP (en progreso), MBA.",
+cT:"Hablemos",cP:"Estoy abierta a roles remotos de implementación, customer success y gestión de programas.",ph:"Teléfono (México)",loc:"Remoto, disponible en horarios de América"},
+fr:{nA:"À propos",nR:"Résultats",nI:"Projets en IA",nS:"Compétences",nC:"Contact",
+sub:"Global Customer Implementation Manager. À distance, disponible sur les fuseaux horaires des Amériques.",
+exp:"Plus de 18 ans d'expérience en implémentation dans des entreprises technologiques SaaS spécialisées en Travel & Expense et Records Management.",
+cta:"Prendre rendez-vous",talk:"Parlez à mon assistant IA",cnt:"pays d'Amérique latine avec des implémentations de projets standardisées",cnt2:"pays avec des implémentations mondiales",cnt3:"pays gérés comme Regional Account Manager",s1:"de renouvellements multipays",s2:"de time-to-value en moins",s3:"de conformité SLA et compliance",
+a1:"Je dirige des implémentations mondiales du lancement jusqu'au régime stable. Je remplace le travail manuel, pays par pays, par un processus standard que les équipes et les clients voient et en lequel ils ont confiance.",
+a2:"J'utilise l'IA pour automatiser et déployer ce travail à grande échelle, et je crée un lien de confiance avec les clients et les équipes en Amérique latine et du Nord. Je travaille en espagnol (langue maternelle), anglais (courant), français (intermédiaire) et portugais (intermédiaire).",
+w1h:"Un processus standard dans toute l'Amérique latine",w1p:"J'ai remplacé les processus locaux manuels au Mexique, en Argentine, au Pérou, au Brésil et en Colombie par un standard adapté à chaque opération. Un tableau de bord partagé montre l'avancement hebdomadaire, les erreurs et les actions en temps réel.",
+w2h:"Méthode d'intégration M&A",w2p:"J'ai conçu une méthode qui combine le standard mondial et les processus de chaque pays pour intégrer les portefeuilles de clients acquis comme clients d'Iron Mountain.",
+w3h:"Renouvellements grands comptes, 100 % de rétention",w3p:"J'ai renouvelé deux grands comptes dans 21 pays grâce à des Strategic Business Reviews exécutives chez CWT.",
+w4h:"Adoption numérique et économies",w4p:"J'ai fait progresser l'adoption de la plateforme numérique grâce à un suivi par marché et à des plans de préparation, réduit de 8 % les dépenses annuelles du client et maintenu 0 % d'attrition sur plus de 50 comptes Fortune 500 chez CWT.",
+w5h:"Taux de renouvellement des contrats",w5p:"J'ai renouvelé 15 des 18 contrats mondiaux Pharma et Assurance chez Iron Mountain, avec 100 % de conformité.",
+i1h:"Assistant virtuel Gemini",i1p:"Répond aux contacts par marché selon le SOW et rédige les comptes rendus, les ordres du jour de lancement et de suivi, les communications et les livrables.",
+i2h:"Formateur de processus NotebookLM",i2p:"Enseigne le processus d'implémentation d'un produit aux nouveaux membres de l'équipe.",
+i3h:"Smartsheet AI",i3p:"A réduit les livrables finaux de 48 à environ 34 heures ouvrables.",
+iN:"Les modèles Gemini et NotebookLM servent désormais de gabarit pour tous les produits soutenus par l'équipe mondiale d'implémentation et d'intégration.",
+k1h:"Implémentation et programmes",k1p:"Implémentation mondiale, gestion de programmes, des risques et du changement, gestion des SOW et des RFP.",
+k2h:"Customer success",k2p:"Gestion de comptes, rétention, renouvellements, Strategic Business Reviews, MEDDPICC.",
+k3h:"IA et outils",k3p:"Gemini, NotebookLM, Smartsheet AI, Smartsheet, Salesforce, Excel.",
+k4h:"Méthodes et certifications",k4p:"Lean Six Sigma Yellow Belt, Agile, PMP (en cours), MBA.",
+cT:"Parlons-nous",cP:"Je suis ouverte aux postes à distance en implémentation, customer success et gestion de programmes.",ph:"Téléphone (Mexique)",loc:"À distance, disponible sur les fuseaux horaires des Amériques"}};
+function setL(l){document.documentElement.lang=l;
+document.querySelectorAll("[data-i]").forEach(e=>e.textContent=T[l][e.dataset.i]);
+document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
+try{localStorage.setItem("lang",l)}catch(e){}}
+let L="en";try{L=localStorage.getItem("lang")||""}catch(e){}
+if(!T[L]){const n=(navigator.language||"en").slice(0,2);L=T[n]?n:"en"}
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setL(b.dataset.l));
+setL(L);
+(function(){const e=document.getElementById("n");if(matchMedia("(prefers-reduced-motion:reduce)").matches){return}
+const t0=performance.now();(function f(t){const p=Math.min((t-t0)/1400,1);e.textContent=Math.round(5*p);if(p<1)requestAnimationFrame(f)})(t0)})();
+</script>
+</body>
+</html>
